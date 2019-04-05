@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7"/>
+    <title>台灣高鐵網路訂位 &gt; 查詢車次</title>
+    <link rel="stylesheet" type="text/css" href="/IMINT/css/site.1.19.css">
+
+    <meta http-equiv="content-language" content="zh-hant-tw">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/themes/base/jquery-ui.css"
+          type="text/css"/>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+    <script src="/IMINT/js/irs.2.7.min.js" type="text/javascript"></script>
+    <script id="tw-com-mitac-webapp-thsr-viewer-Home-0" type="text/javascript">
+$(document).ready(function() {
+	$(':submit[id!=paidModifySubmit], #SubmitImage').click(function() {
+    	$.blockUI({ message: $('#BusyBoxDiv').html() });
+    });
+
+	$(window).bind("unload",function(){
+        $.unblockUI();
+    });
+});
+
+
+    </script>
+
+    <script charset="utf-8" src="/IMINT/js/Calendar/lang/calendar-zh_TW-utf8.js" type="text/javascript"></script>
+    <script id="tw-com-mitac-webapp-thsr-viewer-Home-0" type="text/javascript">
+$(document).ready(function(){
+	BookingS1.load();
+});
+BookingS1.toTimeFieldOnSelect = function(){
+	$('#backTimeInputField').val($('#toTimeInputField').val());
+}
+if (top.location != self.location) {
+    location.href = "https://" + self.location.host + "/IMINT/notice";
+}
+
+
+    </script>
+    <script type="text/javascript"
+            src="/IMINT/resources/wicket.ajax.AbstractDefaultAjaxBehavior/wicket-ajax.js;jsessionid=9CCEA8B5A5C2AD4F8516124B49895FBB"></script>
+    <script type="text/javascript">var thsrcURL = "https://www.thsrc.com.tw/inc/marquee_zh_TW.js";</script>
+</head>
+<body leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0" bgcolor="#FFFFFF">
+
+<div id="BusyBoxDiv" style="display:none;">
+    <span style="color: #ff8000; width: 200px; font-size: 30px; font-weight: bold; text-align: center;"> 請稍候... </span>
+</div>
+<div id="wrap" class="wrap">
+    <!----- header starts ----->
+    <div id="header" class="header_tw">
+        <div class="IRSLogo"></div>
+        <div class="LangCon">
+            <a id="goTW"
+               href="/IMINT/;jsessionid=9CCEA8B5A5C2AD4F8516124B49895FBB?wicket:interface=:0:goChinese::ILinkListener">中文</a>
+            <a id="goEN"
+               href="/IMINT/;jsessionid=9CCEA8B5A5C2AD4F8516124B49895FBB?wicket:interface=:0:goEnglish::ILinkListener">|
+                English</a>
+            <a id="goJP"
+               href="/IMINT/;jsessionid=9CCEA8B5A5C2AD4F8516124B49895FBB?wicket:interface=:0:goJapanese::ILinkListener">|
+                日本語</a>
+        </div>
+        <div class="LinkArea">
+            <table>
+                <tr>
+                    <td class="MainFunc">
+                        <a title="線上立即訂位！可依出發日期時間查詢或直接輸入車次訂位。" class="LinkAddLine"
+                           href="/IMINT/;jsessionid=9CCEA8B5A5C2AD4F8516124B49895FBB">一般網路訂票</a>
+                        <span><a title="大學生優惠" class="LinkAddLine"
+                                 href="/IMINT/;jsessionid=9CCEA8B5A5C2AD4F8516124B49895FBB?student=university">大學生優惠</a></span>
+                        <span><a title="信用卡合作優惠專區" class="LinkAddLine"
+                                 href="/IMINT/creditcard;jsessionid=9CCEA8B5A5C2AD4F8516124B49895FBB">信用卡合作優惠專區</a></span>
+                        <a title="訂位記錄查詢、修改行程、旅客人數刪減、取消訂位、線上付款等相關功能。"
+                           href="/IMINT/;jsessionid=9CCEA8B5A5C2AD4F8516124B49895FBB?wicket:bookmarkablePage=:tw.com.mitac.webapp.thsr.viewer.History">訂位紀錄查詢/付款及修改</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!---- header ends ----->
+
+    <div id="steps" class="steps">
+		<span class="StepTitle">
+		<span>您所在的訂位步驟：</span>
+		</span>
+        <span class="Step01">
+		<strong>
+		1. 查詢車次
+		</strong>
+		</span>
+        <span class="Step02">
+		2. 選擇車次
+		</span>
+        <span class="Step03">
+		3. 取票資訊
+		</span>
+        4. 完成訂位
+    </div>
+    <!----- error message starts ----->
+    <div id="error" class="error"><span class="error">
+
+</span></div>
+    <!----- error message ends ----->
+    <form id="BookingS1Form"
+          action="/IMINT/;jsessionid=9CCEA8B5A5C2AD4F8516124B49895FBB?wicket:interface=:0:BookingS1Form::IFormSubmitListener"
+          method="post">
+        <div style="display:none"><input type="hidden" name="BookingS1Form:hf:0" id="BookingS1Form:hf:0"/></div>
+        <div id="content" class="content">
+            <!----- marquee starts ----->
+            <marquee id="marqueeShow" behavior="scroll" scrollamount="1" direction="left" width="755"></marquee>
+            <!----- marquee ends ----->
+            <div class="tabCon">
+                <a class="TabAc" href="/IMINT/;jsessionid=9CCEA8B5A5C2AD4F8516124B49895FBB">一般網路訂票</a>
+                <a class="TabAb" href="/IMINT/;jsessionid=9CCEA8B5A5C2AD4F8516124B49895FBB?student=university">大學生優惠</a>
+                <a class="TabAb" href="/IMINT/creditcard;jsessionid=9CCEA8B5A5C2AD4F8516124B49895FBB">信用卡合作優惠專區</a>
+            </div>
+
+
+            <table width="100%" border="0" cellpadding="5" cellspacing="0"
+                   class="table_details" id="content">
+
+                <tr>
+                    <td width="240" bgcolor="#eeeeee" class="section_subtitle in80">
+                        起訖站
+                    </td>
+                    <td>
+			<span>
+			起程站
+			<select name="selectStartStation" class="text1">
+<option selected="selected" value="">請選擇...</option>
+<option value="0">&#21335;&#28207;</option>
+<option value="1">&#21488;&#21271;</option>
+<option value="2">&#26495;&#27211;</option>
+<option value="3">&#26691;&#22290;</option>
+<option value="4">&#26032;&#31481;</option>
+<option value="5">&#33495;&#26647;</option>
+<option value="6">&#21488;&#20013;</option>
+<option value="7">&#24432;&#21270;</option>
+<option value="8">&#38642;&#26519;</option>
+<option value="9">&#22025;&#32681;</option>
+<option value="10">&#21488;&#21335;</option>
+<option value="11">&#24038;&#29151;</option>
+</select>
+			</span>
+                        到達站
+                        <select name="selectDestinationStation" class="text1">
+                            <option selected="selected" value="">請選擇...</option>
+                            <option value="0">&#21335;&#28207;</option>
+                            <option value="1">&#21488;&#21271;</option>
+                            <option value="2">&#26495;&#27211;</option>
+                            <option value="3">&#26691;&#22290;</option>
+                            <option value="4">&#26032;&#31481;</option>
+                            <option value="5">&#33495;&#26647;</option>
+                            <option value="6">&#21488;&#20013;</option>
+                            <option value="7">&#24432;&#21270;</option>
+                            <option value="8">&#38642;&#26519;</option>
+                            <option value="9">&#22025;&#32681;</option>
+                            <option value="10">&#21488;&#21335;</option>
+                            <option value="11">&#24038;&#29151;</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td bgcolor="#eeeeee" class="section_subtitle in80">
+                        車廂種類
+                    </td>
+                    <td><span id="BookingS1Form_trainCon_trainRadioGroup" name="trainCon:trainRadioGroup"
+                              onclick="var wcall=wicketAjaxGet('/IMINT/;jsessionid=9CCEA8B5A5C2AD4F8516124B49895FBB?wicket:interface=:0:BookingS1Form:trainCon:trainRadioGroup::IBehaviorListener&wicket:behaviorId=0', function() { }, function() { });"><input
+                            name="trainCon:trainRadioGroup" type="radio" checked="checked" value="0"
+                            id="trainCon:trainRadioGroup_0"/><label for="trainCon:trainRadioGroup_0">&#27161;&#28310;&#36554;&#24258;</label> <input
+                            name="trainCon:trainRadioGroup" type="radio" value="1"
+                            id="trainCon:trainRadioGroup_1"/><label for="trainCon:trainRadioGroup_1">&#21830;&#21209;&#36554;&#24258;</label> </span>
+                    </td>
+                </tr>
+                <tr id="BookingS1Form_seatCon" style="">
+                    <td bgcolor="#eeeeee" class="section_subtitle in80">
+                        座位喜好
+                    </td>
+                    <td>
+                        <input id="seatRadio0" name="seatCon:seatRadioGroup" value="radio20" class="input1" type="radio"
+                               checked="">
+                        無
+                        <input id="seatRadio1" name="seatCon:seatRadioGroup" value="radio22" class="input1"
+                               type="radio">
+                        靠窗優先
+                        <span class="section_subtitle"> </span>
+                        <input id="seatRadio2" name="seatCon:seatRadioGroup" value="radio24" class="input1"
+                               type="radio">
+                        走道優先
+                    </td>
+                </tr>
+                <tr>
+                    <td bgcolor="#eeeeee" class="section_subtitle in80">
+                        訂位方式
+                    </td>
+                    <td>
+                        <span id="BookingS1Form_bookingMethod" name="bookingMethod"><input name="bookingMethod"
+                                                                                           type="radio"
+                                                                                           checked="checked" value="0"
+                                                                                           id="bookingMethod_0"/><label
+                                for="bookingMethod_0">&#20381;&#26178;&#38291;&#25628;&#23563;&#21512;&#36969;&#36554;&#27425;</label> <input
+                                name="bookingMethod" type="radio" value="1" id="bookingMethod_1"/><label
+                                for="bookingMethod_1">&#30452;&#25509;&#36664;&#20837;&#36554;&#27425;&#34399;&#30908;</label> </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top" bgcolor="#eeeeee" class="section_subtitle in80">
+                        時間
+                    </td>
+                    <td>
+			<span id="toDate">去程
+			<input limit="2018/09/25" id="toTimeInputField" maxlength="10" name="toTimeInputField" value="2018/08/26"
+                   Slimit="2018/08/29" date="2018/08/26" type="text" onchange="BookingS1.onlyOffPeakCheck()" size="10"/>
+		 	<input type=button id="ToTimePicker" class="button_Calendar_tw" hidefocus/>
+		 	<script type="text/javascript">
+			$('#ToTimePicker').ready(function(){
+
+		 		BookingS1.NOW = new Date($('#toTimeInputField').attr('date')).getTime();
+		 		Calendar.setup({
+	                 inputField     :    "toTimeInputField",     // id of the input field
+	                 button         :    "ToTimePicker",  // trigger for the calendar (button ID)
+	                 timeFormat : 24,
+	                 ifFormat : "%Y/%m/%d",
+	                 showOthers : true,
+	                 dateStatusFunc :    BookingS1.disableFunc,
+	                 onUpdate : BookingS1.toTimeFieldOnSelect
+	    		});
+		 		BookingS1.onlyOffPeakCheck();
+			});
+		 	</script>
+            </span>
+                        <span id="toTimeTable">
+			 約
+			<select name="toTimeTable">
+<option selected="selected" value="">請選擇...</option>
+<option value="1201A">00:00</option>
+<option value="1230A">00:30</option>
+<option value="600A">06:00</option>
+<option value="630A">06:30</option>
+<option value="700A">07:00</option>
+<option value="730A">07:30</option>
+<option value="800A">08:00</option>
+<option value="830A">08:30</option>
+<option value="900A">09:00</option>
+<option value="930A">09:30</option>
+<option value="1000A">10:00</option>
+<option value="1030A">10:30</option>
+<option value="1100A">11:00</option>
+<option value="1130A">11:30</option>
+<option value="1200N">12:00</option>
+<option value="1230P">12:30</option>
+<option value="100P">13:00</option>
+<option value="130P">13:30</option>
+<option value="200P">14:00</option>
+<option value="230P">14:30</option>
+<option value="300P">15:00</option>
+<option value="330P">15:30</option>
+<option value="400P">16:00</option>
+<option value="430P">16:30</option>
+<option value="500P">17:00</option>
+<option value="530P">17:30</option>
+<option value="600P">18:00</option>
+<option value="630P">18:30</option>
+<option value="700P">19:00</option>
+<option value="730P">19:30</option>
+<option value="800P">20:00</option>
+<option value="830P">20:30</option>
+<option value="900P">21:00</option>
+<option value="930P">21:30</option>
+<option value="1000P">22:00</option>
+<option value="1030P">22:30</option>
+<option value="1100P">23:00</option>
+<option value="1130P">23:30</option>
+</select>
+				出發
+				</span>
+                        <span id="toTrainID" style="display:none">
+			車次號碼
+			<input maxlength="4" name="toTrainIDInputField" value="" type="text" size="4"/>
+			</span>
+                        <input id="returnCheckBox" name="backTimeCheckBox" method="method1" type="checkbox">
+                        訂購回程
+
+                        <span id="backDate" style="display:none"><br/><br/>回程
+			<input id="backTimeInputField" maxlength="10" name="backTimeInputField" value="2018/08/26" type="text"
+                   onchange="BookingS1.onlyOffPeakCheck()" size="10"/>
+		    <input type=button id="BackTimePicker" class="button_Calendar_tw" hidefocus/>
+		    <script type="text/javascript">
+			$('#BackTimePicker').ready(function(){
+
+		 		Calendar.setup({
+	                 inputField     :    "backTimeInputField",     // id of the input field
+	                 button         :    "BackTimePicker",  // trigger for the calendar (button ID)
+	                 timeFormat : 24,
+	                 ifFormat : "%Y/%m/%d",
+	                 showOthers : true,
+	                 dateStatusFunc :    BookingS1.disableFunc
+	    		});
+
+			});
+		 	</script>
+            </span><span id="backTimeTable" style="display:none">
+             約
+            <select name="backTimeTable">
+<option selected="selected" value="">請選擇...</option>
+<option value="1201A">00:00</option>
+<option value="1230A">00:30</option>
+<option value="600A">06:00</option>
+<option value="630A">06:30</option>
+<option value="700A">07:00</option>
+<option value="730A">07:30</option>
+<option value="800A">08:00</option>
+<option value="830A">08:30</option>
+<option value="900A">09:00</option>
+<option value="930A">09:30</option>
+<option value="1000A">10:00</option>
+<option value="1030A">10:30</option>
+<option value="1100A">11:00</option>
+<option value="1130A">11:30</option>
+<option value="1200N">12:00</option>
+<option value="1230P">12:30</option>
+<option value="100P">13:00</option>
+<option value="130P">13:30</option>
+<option value="200P">14:00</option>
+<option value="230P">14:30</option>
+<option value="300P">15:00</option>
+<option value="330P">15:30</option>
+<option value="400P">16:00</option>
+<option value="430P">16:30</option>
+<option value="500P">17:00</option>
+<option value="530P">17:30</option>
+<option value="600P">18:00</option>
+<option value="630P">18:30</option>
+<option value="700P">19:00</option>
+<option value="730P">19:30</option>
+<option value="800P">20:00</option>
+<option value="830P">20:30</option>
+<option value="900P">21:00</option>
+<option value="930P">21:30</option>
+<option value="1000P">22:00</option>
+<option value="1030P">22:30</option>
+<option value="1100P">23:00</option>
+<option value="1130P">23:30</option>
+</select>
+		    出發
+			</span>
+
+                        <span id="backTrainID" style="display:none">
+            車次號碼
+            <input maxlength="4" name="backTrainIDInputField" value="" type="text" size="4"/></span>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td bgcolor="#eeeeee" class="section_subtitle in80">
+                        票數
+                    </td>
+                    <td align="left"><span>
+	<span>
+	<span class="PR10">
+	<span>全票</span>
+	<select name="ticketPanel:rows:0:ticketAmount">
+<option value="0F">0</option>
+<option selected="selected" value="1F">1</option>
+<option value="2F">2</option>
+<option value="3F">3</option>
+<option value="4F">4</option>
+<option value="5F">5</option>
+<option value="6F">6</option>
+<option value="7F">7</option>
+<option value="8F">8</option>
+<option value="9F">9</option>
+<option value="10F">10</option>
+</select>
+	</span>
+	</span><span>
+	<span class="PR10">
+	<span>孩童票(6-11歲)</span>
+	<select name="ticketPanel:rows:1:ticketAmount">
+<option selected="selected" value="0H">0</option>
+<option value="1H">1</option>
+<option value="2H">2</option>
+<option value="3H">3</option>
+<option value="4H">4</option>
+<option value="5H">5</option>
+<option value="6H">6</option>
+<option value="7H">7</option>
+<option value="8H">8</option>
+<option value="9H">9</option>
+<option value="10H">10</option>
+</select>
+	</span>
+	</span><span>
+	<span class="PR10">
+	<span>愛心票</span>
+	<select name="ticketPanel:rows:2:ticketAmount">
+<option selected="selected" value="0W">0</option>
+<option value="1W">1</option>
+<option value="2W">2</option>
+<option value="3W">3</option>
+<option value="4W">4</option>
+<option value="5W">5</option>
+<option value="6W">6</option>
+<option value="7W">7</option>
+<option value="8W">8</option>
+<option value="9W">9</option>
+<option value="10W">10</option>
+</select>
+	</span>
+	</span><span>
+	<span class="PR10">
+	<span>敬老票(65歲以上)</span>
+	<select name="ticketPanel:rows:3:ticketAmount">
+<option selected="selected" value="0E">0</option>
+<option value="1E">1</option>
+<option value="2E">2</option>
+<option value="3E">3</option>
+<option value="4E">4</option>
+<option value="5E">5</option>
+<option value="6E">6</option>
+<option value="7E">7</option>
+<option value="8E">8</option>
+<option value="9E">9</option>
+<option value="10E">10</option>
+</select>
+	</span>
+	</span>
+</span></td>
+                </tr>
+                <tr>
+                    <td bgcolor="#eeeeee" class="section_subtitle in80">
+                        查詢早鳥優惠
+                    </td>
+                    <td align="left">
+                        <div id="onlyQueryOffPeak"><input id="onlyQueryOffPeakCheckBox" offPeakSearchDateLimit="5"
+                                                          name="offPeakTrainSearchContainer:onlyQueryOffPeak"
+                                                          type="checkbox" disabled="disabled"/><span
+                                id="onlyQueryOffPeakMsg">僅顯示尚有早鳥優惠之車次</span></div>
+                    </td>
+                </tr>
+
+            </table>
+            <!-- captcha start -->
+            <div>
+                <br/>
+                <table id="action" class="table_details" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td align="center">
+						<span class="content_key_12pt">
+							為了確保交易安全，請輸入右圖中之驗證碼：
+						</span>
+                            <span class="PR10">
+							<img id="BookingS1Form_homeCaptcha_passCode" align="absmiddle"
+                                 src="/IMINT/;jsessionid=9CCEA8B5A5C2AD4F8516124B49895FBB?wicket:interface=:0:BookingS1Form:homeCaptcha:passCode::IResourceListener&wicket:antiCache=1535282958436">
+						</span>
+                            <span class="PR10">
+							<input name="homeCaptcha:securityCode" value="" class="input1" type="text" size="4">
+						</span>
+                            <a id="BookingS1Form_homeCaptcha_reCodeLink"
+                               onclick="var wcall=wicketAjaxGet('/IMINT/;jsessionid=9CCEA8B5A5C2AD4F8516124B49895FBB?wicket:interface=:0:BookingS1Form:homeCaptcha:reCodeLink::IBehaviorListener&wicket:behaviorId=0', function() { }, function() { });return !wcall;"
+                               href="/IMINT/;jsessionid=9CCEA8B5A5C2AD4F8516124B49895FBB?wicket:interface=:0:BookingS1Form:homeCaptcha:reCodeLink::ILinkListener">
+                                重新產生
+                            </a> |
+                            <a href="/IMINT/;jsessionid=9CCEA8B5A5C2AD4F8516124B49895FBB?wicket:interface=:0:BookingS1Form:homeCaptcha:soundLink::ILinkListener">
+                                語音播放
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- captcha end -->
+        </div>
+
+        <div id="action" class="action">
+            <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                <tr>
+                    <td>&nbsp;</td>
+                    <td align="right"><input id="SubmitButton" hidefocus="" name="SubmitButton" value="開始查詢"
+                                             class="button_main" type="submit"/>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+    <div id="note" class="note">
+        <p class="note_title">注意事項</p>
+
+        <ol>
+            <li>本系統提供預訂當日及未來28日以內之車票。訂位開放時間為乘車日(含)前28日凌晨0點開始，當日車次之預訂僅受理至列車出發時間前1小時為止(如因特殊事由調整開放時間，本公司將另行公告)。</li>
+            <li>每筆交易至多可預訂10張票，不限身份，去回程至多可預訂各5張。購買孩童票之兒童乘車時，建議至少需有一位成人同行為宜。</li>
+            <li>為維護您的權益，請於規定時間內完成付款。如未完成付款，本系統將自動取消訂位。</li>
+            <li><font color="#FF0000">座位喜好功能係依列車訂位概況媒合您期望的座位，如該車次已無合適座位時，為讓您仍可順利完成訂票作業，將由系統自動配置座位。</font><font
+                    color="#FF0000">座位喜好功能僅適用於單人乘客。</font></li>
+            <li>身份說明：
+                <ul>
+                    <li>
+                        孩童票購票說明：未滿12歲之兒童得購買孩童票，身高未滿115公分之兒童不佔位得免票，但應由已購全票或成年旅客陪同，且每位旅客攜帶之免票孩童以2人為限。身高超過150公分且未滿12歲兒童，或身高超過115公分且未滿6歲兒童應出示身分證明。
+                    </li>
+                    <li>敬老票購票說明：乘車當日年滿65歲(含)以上之中華民國國民，憑有效之身分證明文件得購買敬老票。</li>
+                    <li>
+                        愛心票購票說明：持有身心殘障手冊或身心障礙證明之中華民國國民，及其必要同行陪伴者一人，可購買愛心票(持身心障礙證明者，背面「必要陪伴者優惠措施」欄依規定須註記有「國內大眾運輸工具」字樣者，始提供陪伴者一人半價優惠)。如同行陪伴者為外籍人士，乘客資訊請以身心障礙旅客之姓名及身份證字號登錄。本系統目前並無提供預訂無障礙座位，若您有預訂無障礙座位之需求時，請致電高鐵客戶服務專線：4066-3000
+                        （苗栗地區請撥
+                        4266-3000，台東、金門地區請撥4666-3000，馬祖地區及行動電話請撥02-4066-3000，國際來話請撥：+886-2-4066-3000。以上皆為付費電話，依一般市話及行動電話、國際電話費率標準計費。服務時間：06:00~24:00）或請至各車站售票窗口購票。
+                    </li>
+                </ul>
+            </li>
+        </ol>
+
+    </div>
+
+    <script type="text/javascript">
+$(document).ready(function(){
+	$('#toTimeInputField').change(function(){
+		$('#backTimeInputField').val($('#toTimeInputField').val());
+	});
+	$('#returnCheckBox').change(function(){
+		$('#backTimeInputField').val($('#toTimeInputField').val());
+	});
+});
+
+
+    </script>
+    <span id="marqueeURL"></span>
+    <script src="/IMINT/js/marquee.1.2.min.js" type="text/javascript"></script>
+
+    <!----- footer starts ----->
+    <div id="footer" class="footer_tw">
+        <p><a target="_blank" class="m" href="http://www.thsrc.com.tw/tw/FAQ  ">常見問題</a> | <a target="_blank" class="m"
+                                                                                              href="http://www.thsrc.com.tw/tw/Article/ArticleContent/291d80fe-080f-4442-90d0-9a9b82f119e5 ">交易注意事項</a>
+            | <a target="_blank" class="m"
+                 href="http://www.thsrc.com.tw/tw/Article/ArticleContent/d1fa3bcb-a016-47e2-88c6-7b7cbed00ed5  ">個人資料保護專區</a>
+            | <a target="_blank" class="m" href="http://www.thsrc.com.tw/tw/ContactUs/Privacy">聯絡我們</a> | <a
+                    target="_blank" class="m" href="http://www.thsrc.com.tw/tc/index.asp">企業網站</a></p>
+        <p><span id="copySymbol">&copy;</span> 台灣高速鐵路股份有限公司 Taiwan High Speed Rail Corporation.</p>
+    </div>
+    <!----- footer ends ----->
+    <br>
+</div>
+
+<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+
+
+</script>
+<script type="text/javascript">
+		try {
+		var pageTracker = _gat._getTracker("UA-9967381-2");
+		pageTracker._trackPageview();
+		} catch(err) {}
+
+
+</script>
+</body>
+</html>
